@@ -45,6 +45,7 @@ onMounted(() => {
     primaryColor: getComputedStyle(primaryText.value)?.color,
     secondaryColor: getComputedStyle(secondaryText.value)?.color,
   }
+  const fontFamily = getComputedStyle(text.value)?.fontFamily
 
   watch(
     () => theme.value,
@@ -62,6 +63,7 @@ onMounted(() => {
         data: [t('download'), t('upload')],
         textStyle: {
           color: colorMap.color,
+          fontFamily,
         },
       },
       grid: {
@@ -93,6 +95,7 @@ onMounted(() => {
             })}/s`
           },
           color: colorMap.color,
+          fontFamily,
         },
         splitLine: { show: false },
       },

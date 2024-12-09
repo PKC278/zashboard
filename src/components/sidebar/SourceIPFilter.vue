@@ -1,7 +1,7 @@
 <template>
   <select
     v-if="!horizontal"
-    class="select select-bordered select-sm"
+    class="join-item select select-bordered select-sm"
     v-model="sourceIPFilter"
   >
     <option

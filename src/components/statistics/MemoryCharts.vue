@@ -34,8 +34,10 @@ const t = useI18n().t
 const chart = ref()
 
 onMounted(() => {
+  const fontFamily = getComputedStyle(text.value)?.fontFamily
   let color = getComputedStyle(text.value)?.color
   let lineColor = getComputedStyle(line.value)?.color
+
   watch(
     () => theme.value,
     () => {
@@ -50,6 +52,7 @@ onMounted(() => {
         data: [t('memoryUsage')],
         textStyle: {
           color: color,
+          fontFamily,
         },
       },
       grid: {
@@ -82,6 +85,7 @@ onMounted(() => {
             })}`
           },
           color: color,
+          fontFamily,
         },
         splitLine: { show: false },
       },
