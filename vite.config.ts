@@ -4,6 +4,7 @@ import { execSync } from 'child_process'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import vueDevTools from 'vite-plugin-vue-devtools'
 import { version } from './package.json'
 
 const getGitCommitId = (): string => {
@@ -14,7 +15,7 @@ const getGitCommitId = (): string => {
       return ''
     }
 
-    return execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim()
+    return execSync('git rev-parse --short HEAD^1', { encoding: 'utf8' }).trim()
   } catch (error) {
     console.warn('无法获取git commit ID:', error)
     return ''
@@ -30,6 +31,7 @@ export default defineConfig({
   base: './',
   plugins: [
     vue(),
+    vueDevTools(),
     vueJsx(),
     VitePWA({
       registerType: 'autoUpdate',
