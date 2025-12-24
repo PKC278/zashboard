@@ -30,7 +30,9 @@
     <BackendSwitch v-if="!hiddenSettingsItems[`${SETTINGS_MENU_KEY.backend}.backendSwitch`]" />
 
     <template
-      v-if="!isSingBox && configs && !hiddenSettingsItems[`${SETTINGS_MENU_KEY.backend}.ports`]"
+      v-if="
+        !isSingBox && configs && !hiddenSettingsItems[`${SETTINGS_MENU_KEY.backend}.ports`] && false
+      "
     >
       <div class="divider"></div>
       <div
@@ -131,7 +133,7 @@
       class="grid max-w-6xl gap-2 gap-y-3"
       :style="`grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));`"
     >
-      <template v-if="!isSingBox || displayAllFeatures">
+      <template v-if="(!isSingBox || displayAllFeatures) && false">
         <button
           v-if="!activeBackend?.disableUpgradeCore"
           class="btn btn-primary btn-sm"

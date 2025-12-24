@@ -4,10 +4,13 @@
     v-if="!splitOverviewPage && !hiddenSettingsItems[`${SETTINGS_MENU_KEY.overview}.overviewCard`]"
   >
     <OverviewCard />
-    <div class="divider my-4" />
+    <div
+      class="divider my-4"
+      v-if="false"
+    />
   </template>
   <div
-    v-if="hasVisibleItems"
+    v-if="hasVisibleItems && false"
     class="flex flex-col gap-2 p-4 text-sm"
   >
     <div class="settings-title">

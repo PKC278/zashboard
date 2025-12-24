@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-base-200/50 relative h-28 rounded-lg p-2 text-sm">
+  <div
+    class="bg-base-200/50 relative h-28 rounded-lg p-2 text-sm"
+    v-if="false"
+  >
     <div class="flex h-full flex-col justify-between">
       <div>
         <span class="inline-block w-20">Baidu </span>

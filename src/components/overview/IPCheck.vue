@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-base-200/50 relative flex h-28 flex-col gap-1 rounded-lg p-2">
+  <div
+    class="bg-base-200/50 relative flex h-28 flex-col gap-1 rounded-lg p-2"
+    v-if="false"
+  >
     <div class="grid grid-cols-[auto_auto_1fr] gap-x-2 gap-y-1">
       <div class="text-left text-sm">ipip.net</div>
       <div class="text-right text-sm">:</div>
