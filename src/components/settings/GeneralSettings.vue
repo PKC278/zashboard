@@ -1,12 +1,12 @@
 <template>
   <ZashboardSettings />
   <div
-    v-if="hasVisibleGeneralItems"
+    v-if="hasVisibleGeneralItems && false"
     class="divider my-4"
   />
   <!-- dashboard -->
   <div
-    v-if="hasVisibleGeneralItems"
+    v-if="hasVisibleGeneralItems && false"
     class="p-4 text-sm"
   >
     <div class="settings-title">
