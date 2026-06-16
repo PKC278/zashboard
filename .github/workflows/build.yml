@@ -1,0 +1,44 @@
+name: Build Package (zip)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '.github/ISSUE_TEMPLATE/**'
+
+jobs:
+  build:
+    name: Build zip package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+      - uses: pnpm/action-setup@v6
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build:no-fonts
+
+      - name: Create zip
+        run: |
+          cd dist
+          zip -r ../dist.zip .
+          cd ..
+          echo "Package contents:"
+          unzip -l dist.zip
+
+      - name: Create or update release
+        uses: softprops/action-gh-release@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: latest
+          name: zashboard
+          files: dist.zip
+          overwrite_files: true
+          make_latest: true

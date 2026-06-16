@@ -143,12 +143,12 @@ export const dashboardTransparent = useStorage('config/dashboard-transparent', 9
 export const autoUpgradeDashboard = useStorage('config/auto-upgrade', false)
 export const checkUpgradeCore = useStorage('config/check-upgrade-core', true)
 export const autoUpgradeCore = useStorage('config/auto-upgrade-core', false)
-export const swipeInPages = useStorage('config/swipe-in-pages', true)
+export const swipeInPages = computed(() => false)
 export const swipeInTabs = useStorage('config/swipe-in-tabs', false)
 export const disablePullToRefresh = useStorage('config/disable-pull-to-refresh', true)
 export const displayAllFeatures = useStorage('config/display-all-features', false)
 export const blurIntensity = useStorage('config/blur-intensity', 10)
-export const scrollAnimationEffect = useStorage('config/scroll-animation-effect', true)
+export const scrollAnimationEffect = computed(() => false)
 export const IPInfoAPI = useStorage('config/geoip-info-api', IP_INFO_API.IPSB)
 export const autoDisconnectIdleUDP = useStorage('config/auto-disconnect-idle-udp', false)
 export const autoDisconnectIdleUDPTime = useStorage('config/auto-disconnect-idle-udp-time', 300)
@@ -156,8 +156,8 @@ export const keyboardShortcuts = useStorage<Record<string, string>>('config/keyb
 
 // overview
 export const splitOverviewPage = useStorage('config/split-overview-page', false)
-export const autoIPCheck = useStorage('config/auto-ip-check', true)
-export const autoConnectionCheck = useStorage('config/auto-connection-check', true)
+export const autoIPCheck = computed(() => false)
+export const autoConnectionCheck = computed(() => false)
 export const showStatisticsWhenSidebarCollapsed = useStorage(
   'config/show-statistics-when-sidebar-collapsed',
   true,
@@ -264,7 +264,7 @@ export const minProxyCardWidth = useStorage<number>(
 )
 export const manageHiddenGroup = useStorage('config/manage-hidden-group-mode', false)
 
-export const displayGlobalByMode = useStorage('config/display-global-by-mode', false)
+export const displayGlobalByMode = computed(() => true)
 export const customGlobalNode = useStorage('config/custom-global-node-name', GLOBAL)
 
 export const proxyGroupIconSize = useStorage('config/proxy-group-icon-size', 24)

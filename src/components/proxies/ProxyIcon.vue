@@ -9,13 +9,14 @@
     v-else
     class="inline-block"
     :style="style"
-    :src="icon"
+    :src="finalIcon"
+    @error="handleImageError"
   />
 </template>
 
 <script setup lang="ts">
 import DOMPurify from 'dompurify'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -27,6 +28,15 @@ const props = withDefaults(
   {
     size: 16,
     margin: 4,
+  },
+)
+
+const useOriginalUrl = ref(false)
+
+watch(
+  () => props.icon,
+  () => {
+    useOriginalUrl.value = false
   },
 )
 
@@ -46,4 +56,15 @@ const pureDom = computed(() => {
   if (!isDom.value) return
   return DOMPurify.sanitize(props.icon.replace(DOM_STARTS_WITH, ''))
 })
+
+const finalIcon = computed(() => {
+  if (isDom.value || useOriginalUrl.value) return props.icon
+
+  const fileName = props.icon.substring(props.icon.lastIndexOf('/') + 1)
+  return `/ui/icons/${fileName}`
+})
+
+const handleImageError = () => {
+  useOriginalUrl.value = true
+}
 </script>
